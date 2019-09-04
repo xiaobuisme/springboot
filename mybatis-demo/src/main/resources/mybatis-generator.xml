@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <classPathEntry location="C:/Users/lenovo/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.example.mapper.BaseMapper"/>
+        </plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mybatis"
+                        userId="root"
+                        password="root" />
+        <javaModelGenerator targetPackage="com.example.pojo.model"
+                            targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources" />
+        <javaClientGenerator targetPackage="com.example.mapper"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER" />
+        <!-- shema 数据库 tableName表明 -->
+
+        <table schema="mybatis" tableName="t_user"/>
+        <table schema="mybatis" tableName="t_role"/>
+
+    </context>
+</generatorConfiguration>
